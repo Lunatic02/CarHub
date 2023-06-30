@@ -3,6 +3,7 @@ import Image from "next/image"
 import CustomButton from "./CustomButton"
 
 export default function Hero() {
+  const img = ""
 
   const handleScroll = () => {
 
@@ -27,11 +28,10 @@ export default function Hero() {
       </div>
       <div className="hero__image-container">
         <div className="hero__image">
-          <Image src="/assets/hero.png" alt="hero" fill className="object-contain" />
-          <div className="hero__image-overlay">
-            <Image src="/assets/hero-bg.png" alt="hero" fill className="object-contain" ></Image>
-          </div>
+          <Image src="/hero.png" alt="hero" fill className="object-contain" />
         </div>
+        <div className="hero__image-overlay" />
+        
       </div>
     </div>
   )
