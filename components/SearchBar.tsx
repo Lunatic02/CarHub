@@ -1,8 +1,10 @@
 'use client'
 
+import React from "react"
 import { useState } from "react"
 import Image from "next/image"
 import {SearchManufacturer} from "@/components"
+import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url"
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   <button type='submit' className={`-ml-3 z-10 ${otherClasses}`}>
@@ -21,8 +23,24 @@ const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState('')
   const [model, setModel] = useState('')
 
-  const handleSearch = ()=>{}
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+
+    if(manufacturer === '' && model === ''){
+      return alert('Please fill in the search bar')
+    };
+
+
+  }
   
+  const updateSearchParams = (model:string, manufacturer: string)=>{
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if(model){
+      searchParams.set('model', model)
+    }
+  }
+
   return (
     <form className='searchbar' onSubmit={handleSearch}>
       <div className='searchbar__item'>
